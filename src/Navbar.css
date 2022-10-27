@@ -1,0 +1,43 @@
+.nav_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  padding: 1rem;
+  height: 7rem;
+  width: 100%;
+  background-color: #09f;
+}
+
+.nav_container h3 {
+  color: #fff;
+  font-size: 4rem;
+}
+
+.nav_container_shop {
+  position: relative;
+}
+
+#cart {
+  position: relative;
+  left: -1.5rem;
+  font-size: 3rem;
+  color: #fff;
+}
+
+.amount-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -1rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgb(119, 201, 255);
+}
+
+.nav_container_shop p {
+  font-size: 2rem;
+  color: #fff;
+}
