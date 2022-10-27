@@ -1,0 +1,168 @@
+.cart_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: column wrap;
+  width: 90%;
+  height: auto;
+}
+
+.cart_container_title {
+  padding: 1rem;
+}
+
+.cart_container_title h2 {
+  font-size: 5rem;
+}
+
+.cart_container_empty h4 {
+  font-size: 3rem;
+}
+
+.cart_container_items {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-flow: column wrap;
+  width: 100%;
+  height: auto;
+  margin: 1rem 0 1rem 0;
+}
+
+.cart_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 10rem;
+}
+
+.cart_item_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.cart_item_img_img {
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+}
+
+.cart_item_information {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-flow: column wrap;
+  height: 100%;
+  flex: 2 1 auto;
+  width: 20rem;
+}
+
+.cart_item_information h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart_item_information p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cart_item_information button {
+  background: none;
+  border: none;
+  color: #09f;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.cart_item_amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  flex: 1 1 auto;
+}
+
+#cart-up,
+#cart-down {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #09f;
+}
+
+.cart_item_amount p {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.cart_container_total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: column wrap;
+  width: 100%;
+  height: 15rem;
+  border-top: 0.2rem solid #000;
+}
+
+.cart_container_total_price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 1rem 0 0 0;
+  width: 100%;
+}
+
+.cart_container_total_price h3 {
+  font-size: 2rem;
+}
+
+.cart_container_total_price p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.cart_container_total button {
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border: 0.2rem solid #ff0000;
+  background: none;
+  font-size: 2rem;
+  color: #ff0000;
+  padding: 0.5rem;
+}
+
+@media only screen and (min-width: 280px) and (max-width: 360px) {
+  .cart_item_img_img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .cart_item_information {
+    width: 15rem;
+  }
+
+  .cart_item_information h3 {
+    font-size: 1.5rem;
+  }
+
+  .cart_item_information p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cart_container_items {
+    max-width: 50rem;
+  }
+
+  .cart_container_total {
+    max-width: 55rem;
+  }
+}
