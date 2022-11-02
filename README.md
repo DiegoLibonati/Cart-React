@@ -33,3 +33,7 @@ I made a web application that simulates a shopping cart. Basically we will have 
 `https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Cart%20app%20page`
 
 ## Video
+
+
+https://user-images.githubusercontent.com/99032604/199618079-8e5e1e41-e011-4957-95ea-e503d9fe90f1.mp4
+
