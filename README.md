@@ -30,7 +30,7 @@ I made a web application that simulates a shopping cart. Basically we will have 
 
 ## Portfolio Link
 
-`https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Cart%20app%20page`
+`https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Cart%20App%20Page`
 
 ## Video
 
