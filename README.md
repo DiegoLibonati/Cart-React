@@ -16,21 +16,9 @@ I made a web application that simulates a shopping cart. Basically we will have 
 1. React JS
 2. CSS3
 
-## Galery
-
-![Cart-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/cartreact-0.jpg)
-
-![Cart-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/cartreact-1.jpg)
-
-![Cart-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/cartreact-2.jpg)
-
-![Cart-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/cartreact-3.jpg)
-
-![Cart-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/cartreact-4.jpg)
-
 ## Portfolio Link
 
-`https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Cart%20App%20Page`
+[`https://www.diegolibonati.com.ar/#/project/34`](https://www.diegolibonati.com.ar/#/project/34)
 
 ## Video
 
