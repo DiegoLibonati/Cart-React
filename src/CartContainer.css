@@ -13,10 +13,12 @@
 
 .cart_container_title h2 {
   font-size: 5rem;
+  text-align: center;
 }
 
-.cart_container_empty h4 {
+.cart_container_title h4 {
   font-size: 3rem;
+  text-align: center;
 }
 
 .cart_container_items {

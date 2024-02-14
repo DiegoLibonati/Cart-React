@@ -1,7 +1,15 @@
+import React from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import { useGlobalContext } from "../helpers/context";
+import { useGlobalContext } from "../context/context";
+import { CartItemProps } from "../entities/entities";
 
-export const CartItem = ({ id, title, price, img, amount }) => {
+export const CartItem = ({
+  id,
+  title,
+  price,
+  img,
+  amount,
+}: CartItemProps): JSX.Element => {
   const { clearItem, increaseItem, decreaseItem } = useGlobalContext();
 
   return (

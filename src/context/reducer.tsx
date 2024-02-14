@@ -1,17 +1,21 @@
-const reducer = (state, action) => {
+import { CartState, PayloadReducer } from "../entities/entities";
+
+const reducer = (state: CartState, action: PayloadReducer) => {
   if (action.type === "CLEAR_CART") {
     return { ...state, cart: [] };
   }
 
   if (action.type === "CLEAR_ITEM") {
-    const arrayFilter = state.cart.filter((item) => item.id !== action.payload);
+    const arrayFilter = state.cart.filter(
+      (item) => item.id !== action.payload?.id
+    );
 
     return { ...state, cart: arrayFilter };
   }
 
   if (action.type === "INCREASE_ITEM") {
     const cartTemp = state.cart.map((cartItem) => {
-      if (cartItem.id === action.payload) {
+      if (cartItem.id === action.payload?.id) {
         return { ...cartItem, amount: cartItem.amount + 1 };
       }
       return cartItem;
@@ -23,7 +27,7 @@ const reducer = (state, action) => {
   if (action.type === "DECREASE_ITEM") {
     const cartTemp = state.cart
       .map((cartItem) => {
-        if (cartItem.id === action.payload) {
+        if (cartItem.id === action.payload?.id) {
           return { ...cartItem, amount: cartItem.amount - 1 };
         }
         return cartItem;
@@ -59,7 +63,7 @@ const reducer = (state, action) => {
   }
 
   if (action.type === "DISPLAY_ITEMS") {
-    return { ...state, cart: action.payload, loading: false };
+    return { ...state, cart: action.payload?.cart, loading: false };
   }
 
   throw new Error("Error match");

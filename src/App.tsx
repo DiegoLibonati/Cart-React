@@ -1,0 +1,31 @@
+import React from "react";
+import { CartContainer } from "./components/CartContainer";
+import { Navbar } from "./components/Navbar";
+import { useGlobalContext } from "./context/context";
+import "./App.css";
+
+export function App(): JSX.Element {
+  const { loading } = useGlobalContext();
+
+  if (loading) {
+    return (
+      <main>
+        <section className="cart_container_title">
+          <h2>Loading...</h2>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <>
+      <header>
+        <Navbar></Navbar>
+      </header>
+
+      <main>
+        <CartContainer></CartContainer>
+      </main>
+    </>
+  );
+}

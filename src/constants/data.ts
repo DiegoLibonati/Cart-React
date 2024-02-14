@@ -1,4 +1,6 @@
-export const phones = [
+import { Phone } from "../entities/entities";
+
+export const phones: Phone[] = [
   {
     id: 1,
     title: "Samsung Galaxy S7",
