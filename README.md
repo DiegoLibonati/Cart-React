@@ -1,4 +1,4 @@
-# Cart-App-Page
+# Cart React
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ I made a web application that simulates a shopping cart. Basically we will have 
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/34`](https://www.diegolibonati.com.ar/#/project/34)
+[`https://www.diegolibonati.com.ar/#/project/Cart-React`](https://www.diegolibonati.com.ar/#/project/Cart-React)
 
 ## Video
 
