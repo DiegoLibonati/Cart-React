@@ -3,7 +3,7 @@ import { AppContextT, CartState, Phone } from "../entities/entities";
 import reducer from "./reducer";
 import { phones } from "../constants/data";
 
-const url = "https://course-api.com/react-useReducer-cart-project";
+const API_PHONES = "/react-useReducer-cart-project";
 
 const initialState: CartState = {
   loading: false,
@@ -36,7 +36,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const fetchData = async (): Promise<void> => {
     dispatch({ type: "LOADING" });
 
-    const response = await fetch(url);
+    const response = await fetch(API_PHONES);
+
     const cart: Phone[] = await response.json();
 
     dispatch({ type: "DISPLAY_ITEMS", payload: { cart: cart } });
