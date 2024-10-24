@@ -1,7 +1,8 @@
-import React from "react";
 import { CartItem } from "./CartItem";
-import "../CartContainer.css";
+
 import { useGlobalContext } from "../context/context";
+
+import "../CartContainer.css";
 
 export const CartContainer = (): JSX.Element => {
   const { cart, total, clearCart } = useGlobalContext();
@@ -16,7 +17,7 @@ export const CartContainer = (): JSX.Element => {
       </section>
     );
   }
-  
+
   return (
     <section className="cart_container">
       <article className="cart_container_title">
@@ -25,7 +26,7 @@ export const CartContainer = (): JSX.Element => {
 
       <article className="cart_container_items">
         {cart.map((item) => {
-          return <CartItem key={item.id} {...item}></CartItem>;
+          return <CartItem key={item.id} id={item.id}></CartItem>;
         })}
       </article>
 
