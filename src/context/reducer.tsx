@@ -1,31 +1,30 @@
 import { CartState, PayloadReducer } from "../entities/entities";
 
+import { getTotalAndAmount } from "../helpers/getTotalAndAmount";
+
 const reducer = (state: CartState, action: PayloadReducer) => {
   if (action.type === "CLEAR_CART") {
     return { ...state, cart: [] };
   }
 
   if (action.type === "CLEAR_ITEM") {
-    const arrayFilter = state.cart.filter(
-      (item) => item.id !== action.payload?.id
-    );
-
-    return { ...state, cart: arrayFilter };
+    const arrCart = state.cart.filter((item) => item.id !== action.payload?.id);
+    return { ...state, cart: arrCart };
   }
 
   if (action.type === "INCREASE_ITEM") {
-    const cartTemp = state.cart.map((cartItem) => {
+    const arrCart = state.cart.map((cartItem) => {
       if (cartItem.id === action.payload?.id) {
         return { ...cartItem, amount: cartItem.amount + 1 };
       }
       return cartItem;
     });
 
-    return { ...state, cart: cartTemp };
+    return { ...state, cart: arrCart };
   }
 
   if (action.type === "DECREASE_ITEM") {
-    const cartTemp = state.cart
+    const arrCart = state.cart
       .map((cartItem) => {
         if (cartItem.id === action.payload?.id) {
           return { ...cartItem, amount: cartItem.amount - 1 };
@@ -34,28 +33,7 @@ const reducer = (state: CartState, action: PayloadReducer) => {
       })
       .filter((cartItem) => cartItem.amount !== 0);
 
-    return { ...state, cart: cartTemp };
-  }
-
-  if (action.type === "GET_TOTALS") {
-    let { total, amount } = state.cart.reduce(
-      (cartTotal, cartItem) => {
-        const { price, amount } = cartItem;
-        const itemTotal = price * amount;
-
-        cartTotal.total += itemTotal;
-        cartTotal.amount += amount;
-        return cartTotal;
-      },
-      {
-        total: 0,
-        amount: 0,
-      }
-    );
-
-    total = parseFloat(total.toFixed(2));
-
-    return { ...state, total, amount };
+    return { ...state, cart: arrCart };
   }
 
   if (action.type === "LOADING") {
@@ -63,7 +41,17 @@ const reducer = (state: CartState, action: PayloadReducer) => {
   }
 
   if (action.type === "DISPLAY_ITEMS") {
-    return { ...state, cart: action.payload?.cart, loading: false };
+    return {
+      ...state,
+      cart: action.payload?.cart,
+      loading: false,
+    };
+  }
+
+  if (action.type === "SET_TOTALS_AND_AMOUNT") {
+    const { amount, total } = getTotalAndAmount(state.cart);
+
+    return { ...state, amount: amount, total: total };
   }
 
   throw new Error("Error match");

@@ -1,20 +1,27 @@
 import React, { useContext, useEffect, useReducer } from "react";
+
 import { AppContextT, CartState, Phone } from "../entities/entities";
+
 import reducer from "./reducer";
-import { phones } from "../constants/data";
 
 const API_PHONES = "/react-useReducer-cart-project";
 
 const initialState: CartState = {
   loading: false,
-  cart: phones,
+  cart: [],
   total: 0,
   amount: 0,
 };
 
 export const AppContext = React.createContext<AppContextT | null>(null);
 
-export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+export const AppProvider = ({
+  children,
+  initialCart,
+}: {
+  children: React.ReactNode;
+  initialCart?: Phone[];
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const clearCart = (): void => {
@@ -33,22 +40,36 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: "DECREASE_ITEM", payload: { id: id } });
   };
 
-  const fetchData = async (): Promise<void> => {
+  const displayItems = (cart: Phone[]): void => {
+    dispatch({ type: "DISPLAY_ITEMS", payload: { cart: cart } });
+  };
+
+  const setTotalAndAmount = (): void => {
+    dispatch({ type: "SET_TOTALS_AND_AMOUNT" });
+  };
+
+  const setLoading = (): void => {
     dispatch({ type: "LOADING" });
+  };
+
+  const fetchCart = async (): Promise<void> => {
+    setLoading();
 
     const response = await fetch(API_PHONES);
 
     const cart: Phone[] = await response.json();
 
-    dispatch({ type: "DISPLAY_ITEMS", payload: { cart: cart } });
+    displayItems(cart);
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (initialCart) return displayItems(initialCart);
+
+    fetchCart();
+  }, [initialCart]);
 
   useEffect(() => {
-    dispatch({ type: "GET_TOTALS" });
+    setTotalAndAmount();
   }, [state.cart]);
 
   return (
@@ -58,10 +79,12 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         cart: state.cart,
         total: state.total,
         amount: state.amount,
-        clearCart,
-        clearItem,
-        increaseItem,
-        decreaseItem,
+        clearCart: clearCart,
+        clearItem: clearItem,
+        increaseItem: increaseItem,
+        decreaseItem: decreaseItem,
+        displayItems: displayItems,
+        setLoading: setLoading,
       }}
     >
       {children}
