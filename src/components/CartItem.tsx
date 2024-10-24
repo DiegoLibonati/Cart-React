@@ -1,41 +1,48 @@
-import React from "react";
-import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import { useGlobalContext } from "../context/context";
 import { CartItemProps } from "../entities/entities";
 
-export const CartItem = ({
-  id,
-  title,
-  price,
-  img,
-  amount,
-}: CartItemProps): JSX.Element => {
-  const { clearItem, increaseItem, decreaseItem } = useGlobalContext();
+import { useGlobalContext } from "../context/context";
+
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+
+export const CartItem = ({ id }: CartItemProps): JSX.Element => {
+  const { cart, clearItem, increaseItem, decreaseItem } = useGlobalContext();
+
+  const item = cart.find((cartItem) => cartItem.id === id);
 
   return (
     <div className="cart_item">
       <div className="cart_item_img">
-        <img className="cart_item_img_img" src={img} alt={title}></img>
+        <img
+          className="cart_item_img_img"
+          src={item?.img}
+          alt={item?.title}
+        ></img>
       </div>
 
       <div className="cart_item_information">
-        <h3>{title}</h3>
-        <p>${price}</p>
+        <h3>{item?.title}</h3>
+        <p>${item?.price}</p>
         <button type="button" onClick={() => clearItem(id)}>
           Remove
         </button>
       </div>
 
       <div className="cart_item_amount">
-        <BsChevronUp
-          id="cart-up"
+        <button
+          type="button"
+          aria-label="increase phone"
           onClick={() => increaseItem(id)}
-        ></BsChevronUp>
-        <p>{amount}</p>
-        <BsChevronDown
-          id="cart-down"
+        >
+          <BsChevronUp id="cart-up"></BsChevronUp>
+        </button>
+        <p>{item?.amount}</p>
+        <button
+          type="button"
+          aria-label="decrease phone"
           onClick={() => decreaseItem(id)}
-        ></BsChevronDown>
+        >
+          <BsChevronDown id="cart-down"></BsChevronDown>
+        </button>
       </div>
     </div>
   );
