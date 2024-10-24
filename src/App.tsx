@@ -1,7 +1,10 @@
-import React from "react";
+import { Fragment } from "react";
+
 import { CartContainer } from "./components/CartContainer";
 import { Navbar } from "./components/Navbar";
+
 import { useGlobalContext } from "./context/context";
+
 import "./App.css";
 
 export function App(): JSX.Element {
@@ -18,7 +21,7 @@ export function App(): JSX.Element {
   }
 
   return (
-    <>
+    <Fragment>
       <header>
         <Navbar></Navbar>
       </header>
@@ -26,6 +29,6 @@ export function App(): JSX.Element {
       <main>
         <CartContainer></CartContainer>
       </main>
-    </>
+    </Fragment>
   );
 }
