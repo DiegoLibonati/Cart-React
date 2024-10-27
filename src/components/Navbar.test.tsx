@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar";
 
 import { AppProvider } from "../context/context";
 import { createServer } from "../test/server";
+import { getTotalAndAmount } from "../helpers/getTotalAndAmount";
 
 const PHONES = [
   {
@@ -39,19 +40,24 @@ test("Rendering of the number of telephones in the cart", async () => {
     </AppProvider>
   );
 
-  const amount = await screen.findByText(new RegExp("4"));
+  const { amount: amountFromPhones } = getTotalAndAmount(PHONES);
+
+  const amount = await screen.findByText(new RegExp(String(amountFromPhones)));
 
   expect(amount).toBeInTheDocument();
 });
 
 test("Rendering of the number of telephones in the cart through an initialValue", async () => {
+  const phone = PHONES[0];
+
   render(
     <AppProvider initialCart={[PHONES[0]]}>
       <Navbar />
     </AppProvider>
   );
 
-  const amountElement = screen.getByText(new RegExp("1"));
+  const amountPhone = phone.amount;
+  const amountElement = screen.getByText(new RegExp(String(amountPhone)));
 
   expect(amountElement).toBeInTheDocument();
 });

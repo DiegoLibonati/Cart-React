@@ -53,8 +53,6 @@ const renderComponent = (): {
   };
 };
 
-// TODO: TEST # Cambie el Total dependiendo si sube o baja
-
 test("It is expected that touching the clean cart button will render the message that the cart is empty.", async () => {
   renderComponent();
 
