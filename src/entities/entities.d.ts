@@ -7,7 +7,7 @@ export type CartState = {
   amount: number;
 };
 
-export type AppContextT = {
+export type AppContext = {
   loading: boolean;
   cart: Phone[];
   total: number;
@@ -38,7 +38,3 @@ export type PayloadReducer =
   | { type: "DISPLAY_ITEMS"; payload: { cart: Phone[] } };
 
 // Interfaces
-
-export interface CartItemProps {
-  id: number;
-}

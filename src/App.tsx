@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
-import { CartContainer } from "./components/CartContainer";
-import { Navbar } from "./components/Navbar";
+import { CartContainer } from "./components/CartContainer/CartContainer";
+import { Navbar } from "./components/Navbar/Navbar";
 
 import { useGlobalContext } from "./context/context";
 

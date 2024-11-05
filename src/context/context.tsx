@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useReducer } from "react";
 
-import { AppContextT, CartState, Phone } from "../entities/entities";
+import { AppContext as AppContextT, CartState, Phone } from "../entities/entities";
 
 import reducer from "./reducer";
 

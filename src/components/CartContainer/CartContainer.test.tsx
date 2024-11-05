@@ -1,13 +1,13 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Phone } from "../entities/entities";
+import { Phone } from "../../entities/entities";
 
 import { CartContainer } from "./CartContainer";
 
-import { getTotalAndAmount } from "../helpers/getTotalAndAmount";
-import { AppProvider } from "../context/context";
-import { createServer } from "../test/server";
+import { getTotalAndAmount } from "../../helpers/getTotalAndAmount";
+import { AppProvider } from "../../context/context";
+import { createServer } from "../../test/server";
 
 const PHONES = [
   {

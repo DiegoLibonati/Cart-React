@@ -1,12 +1,12 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Phone } from "../entities/entities";
+import { Phone } from "../../entities/entities";
 
 import { CartItem } from "./CartItem";
 
-import { AppProvider } from "../context/context";
-import { createServer } from "../test/server";
+import { AppProvider } from "../../context/context";
+import { createServer } from "../../test/server";
 
 const PHONES = [
   {

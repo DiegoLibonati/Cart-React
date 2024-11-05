@@ -1,8 +1,8 @@
-import { useGlobalContext } from "../context/context";
+import { useGlobalContext } from "../../context/context";
 
 import { BsFillCartFill } from "react-icons/bs";
 
-import "../Navbar.css";
+import "./Navbar.css";
 
 export const Navbar = (): JSX.Element => {
   const { amount } = useGlobalContext();
