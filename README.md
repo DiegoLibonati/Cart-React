@@ -17,6 +17,16 @@ I made a web application that simulates a shopping cart. Basically we will have 
 2. Typescript
 3. CSS3
 
+## Libraries used
+
+1. @testing-library/jest-dom
+2. @testing-library/react
+3. @testing-library/user-event
+4. react-icons
+5. @testing-library/dom
+6. @types/jest
+7. msw
+
 ## Portfolio Link
 
 [`https://www.diegolibonati.com.ar/#/project/Cart-React`](https://www.diegolibonati.com.ar/#/project/Cart-React)
@@ -24,6 +34,12 @@ I made a web application that simulates a shopping cart. Basically we will have 
 ## Video
 
 https://user-images.githubusercontent.com/99032604/199618079-8e5e1e41-e011-4957-95ea-e503d9fe90f1.mp4
+
+## Testing
+
+1. Join to the correct path of the clone and join to: `bookstore-app`
+2. Execute: `yarn install`
+3. Execute: `yarn test`
 
 ## Documentation
 
