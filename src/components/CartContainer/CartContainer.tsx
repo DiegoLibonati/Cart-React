@@ -33,7 +33,7 @@ export const CartContainer = (): JSX.Element => {
       <article className="cart_container_total">
         <div className="cart_container_total_price">
           <h3>Total</h3>
-          <p>$ {total}</p>
+          <p>$ {total.toFixed(2)}</p>
         </div>
 
         <button type="button" onClick={() => clearCart()}>

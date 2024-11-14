@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@bundled-es-modules)/\"",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,5 +44,10 @@
     "@types/react-dom": "^18.3.1",
     "msw": "^2.4.11",
     "typescript": "^5.3.3"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@bundled-es-modules)/"
+    ]
   }
 }

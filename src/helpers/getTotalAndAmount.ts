@@ -8,7 +8,7 @@ type GetTotalAndAmount = {
 export const getTotalAndAmount = (arr: Phone[]): GetTotalAndAmount => {
   return arr.reduce(
     (acc, phone) => {
-      acc.total += parseFloat((Number(phone.price) * phone.amount).toFixed(2));
+      acc.total += parseFloat(String(Number(phone.price) * phone.amount));
       acc.amount += phone.amount;
       return acc;
     },
