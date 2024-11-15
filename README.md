@@ -53,7 +53,7 @@ https://user-images.githubusercontent.com/99032604/199618079-8e5e1e41-e011-4957-
 
 ## Testing
 
-1. Join to the correct path of the clone and join to: `bookstore-app`
+1. Join to the correct path of the clone
 2. Execute: `yarn install`
 3. Execute: `yarn test`
 
