@@ -7,7 +7,7 @@ import { CartContainer } from "./CartContainer";
 
 import { getTotalAndAmount } from "../../helpers/getTotalAndAmount";
 import { AppProvider } from "../../context/context";
-import { createServer } from "../../test/msw/server";
+import { createServer } from "../../tests/msw/server";
 
 const PHONES = [
   {

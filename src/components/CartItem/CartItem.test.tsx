@@ -6,7 +6,7 @@ import { Phone } from "../../entities/entities";
 import { CartItem } from "./CartItem";
 
 import { AppProvider } from "../../context/context";
-import { createServer } from "../../test/msw/server";
+import { createServer } from "../../tests/msw/server";
 
 const PHONES = [
   {

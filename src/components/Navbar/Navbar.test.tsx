@@ -3,7 +3,7 @@ import { screen, render } from "@testing-library/react";
 import { Navbar } from "./Navbar";
 
 import { AppProvider } from "../../context/context";
-import { createServer } from "../../test/msw/server";
+import { createServer } from "../../tests/msw/server";
 import { getTotalAndAmount } from "../../helpers/getTotalAndAmount";
 
 const PHONES = [

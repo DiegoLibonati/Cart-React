@@ -6,7 +6,7 @@ import { Phone } from "./entities/entities";
 import { App } from "./App";
 
 import { AppProvider } from "./context/context";
-import { createServer } from "./test/msw/server";
+import { createServer } from "./tests/msw/server";
 import { getTotalAndAmount } from "./helpers/getTotalAndAmount";
 
 const PHONES = [
