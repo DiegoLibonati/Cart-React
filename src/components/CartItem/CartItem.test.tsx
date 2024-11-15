@@ -160,6 +160,7 @@ test("It is intended to decrease the amount of the cell phone when the decrease 
   if (!quantity) {
     const amountElement = screen.queryByText(String(quantity));
 
+    // eslint-disable-next-line
     expect(amountElement).not.toBeInTheDocument();
 
     return;
