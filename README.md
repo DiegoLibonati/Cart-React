@@ -4,8 +4,8 @@
 
 1. Clone the repository
 2. Join to the correct path of the clone
-3. Install node_modules with `npm install` or `yarn install`
-4. Use `npm start` or `yarn start` to run the app page
+3. Execute: `yarn install` or `npm install`
+4. Execute: `yarn start` or `npm start` and enjoy!
 
 ## Description
 
@@ -58,10 +58,4 @@ https://user-images.githubusercontent.com/99032604/199618079-8e5e1e41-e011-4957-
 ## Testing
 
 1. Join to the correct path of the clone
-2. Execute: `yarn install`
-3. Execute: `yarn test`
-
-## Documentation
-
-1. In `context/reducer.tsx` we are going to find all the reducers where the states are modified through the executed actions.
-3. In `context/context.tsx` we will find all the states and functions that will be executed in the whole application.
+2. Execute: `yarn test` or `npm test`
