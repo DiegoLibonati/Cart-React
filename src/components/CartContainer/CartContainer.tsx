@@ -9,8 +9,8 @@ export const CartContainer = (): JSX.Element => {
 
   if (cart.length === 0) {
     return (
-      <section className="cart_container">
-        <article className="cart_container_title">
+      <section className="cart">
+        <article className="cart__title">
           <h2>Your bag</h2>
           <h4>Is currently empty</h4>
         </article>
@@ -19,24 +19,28 @@ export const CartContainer = (): JSX.Element => {
   }
 
   return (
-    <section className="cart_container">
-      <article className="cart_container_title">
+    <section className="cart">
+      <article className="cart__title">
         <h2>Your bag</h2>
       </article>
 
-      <article className="cart_container_items">
+      <article className="cart__items">
         {cart.map((item) => {
           return <CartItem key={item.id} id={item.id}></CartItem>;
         })}
       </article>
 
-      <article className="cart_container_total">
-        <div className="cart_container_total_price">
+      <article className="cart__total">
+        <div className="cart__total__price">
           <h3>Total</h3>
           <p>$ {total.toFixed(2)}</p>
         </div>
 
-        <button type="button" onClick={() => clearCart()}>
+        <button
+          type="button"
+          aria-label="clear cart"
+          onClick={() => clearCart()}
+        >
           CLEAR CART
         </button>
       </article>

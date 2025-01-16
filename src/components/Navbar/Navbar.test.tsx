@@ -2,62 +2,53 @@ import { screen, render } from "@testing-library/react";
 
 import { Navbar } from "./Navbar";
 
-import { AppProvider } from "../../context/context";
 import { createServer } from "../../tests/msw/server";
+import { phones } from "../../tests/jest.constants";
+
+import { AppProvider } from "../../context/context";
 import { getTotalAndAmount } from "../../helpers/getTotalAndAmount";
 
-const PHONES = [
-  {
-    id: 1,
-    title: "Samsung Galaxy S8",
-    price: 399.99,
-    img: "https://www.course-api.com/images/cart/phone-1.png",
-    amount: 1,
-  },
-  {
-    id: 2,
-    title: "google pixel",
-    price: 499.99,
-    img: "https://www.course-api.com/images/cart/phone-2.png",
-    amount: 3,
-  },
-];
+describe("Navbar.tsx", () => {
+  describe("General Tests.", () => {
+    createServer([
+      {
+        path: "/react-useReducer-cart-project",
+        method: "get",
+        res: () => {
+          return phones;
+        },
+      },
+    ]);
 
-createServer([
-  {
-    path: "/react-useReducer-cart-project",
-    method: "get",
-    res: () => {
-      return PHONES;
-    },
-  },
-]);
+    test("Rendering of the number of telephones in the cart", async () => {
+      render(
+        <AppProvider>
+          <Navbar />
+        </AppProvider>
+      );
 
-test("Rendering of the number of telephones in the cart", async () => {
-  render(
-    <AppProvider>
-      <Navbar />
-    </AppProvider>
-  );
+      const { amount: amountFromPhones } = getTotalAndAmount(phones);
 
-  const { amount: amountFromPhones } = getTotalAndAmount(PHONES);
+      const amount = await screen.findByText(
+        new RegExp(String(amountFromPhones))
+      );
 
-  const amount = await screen.findByText(new RegExp(String(amountFromPhones)));
+      expect(amount).toBeInTheDocument();
+    });
 
-  expect(amount).toBeInTheDocument();
-});
+    test("Rendering of the number of telephones in the cart through an initialValue", async () => {
+      const phone = phones[0];
 
-test("Rendering of the number of telephones in the cart through an initialValue", async () => {
-  const phone = PHONES[0];
+      render(
+        <AppProvider initialCart={[phones[0]]}>
+          <Navbar />
+        </AppProvider>
+      );
 
-  render(
-    <AppProvider initialCart={[PHONES[0]]}>
-      <Navbar />
-    </AppProvider>
-  );
+      const amountPhone = phone.amount;
+      const amountElement = screen.getByText(new RegExp(String(amountPhone)));
 
-  const amountPhone = phone.amount;
-  const amountElement = screen.getByText(new RegExp(String(amountPhone)));
-
-  expect(amountElement).toBeInTheDocument();
+      expect(amountElement).toBeInTheDocument();
+    });
+  });
 });

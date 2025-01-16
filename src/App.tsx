@@ -13,7 +13,7 @@ export function App(): JSX.Element {
   if (loading) {
     return (
       <main>
-        <section className="cart_container_title">
+        <section className="cart__title">
           <h2>Loading...</h2>
         </section>
       </main>

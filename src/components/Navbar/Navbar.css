@@ -1,4 +1,4 @@
-.nav_container {
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,15 +6,15 @@
   padding: 1rem;
   height: 7rem;
   width: 100%;
-  background-color: #09f;
+  background-color: var(--primary-color);
 }
 
-.nav_container h3 {
-  color: #fff;
+.navbar h3 {
+  color: var(--white-color);
   font-size: 4rem;
 }
 
-.nav_container_shop {
+.navbar__shop {
   position: relative;
 }
 
@@ -22,10 +22,10 @@
   position: relative;
   left: -1.5rem;
   font-size: 3rem;
-  color: #fff;
+  color: var(--white-color);
 }
 
-.amount-container {
+.navbar__amount {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,10 +34,10 @@
   top: -1rem;
   width: 3rem;
   height: 3rem;
-  background-color: rgb(119, 201, 255);
+  background-color: var(--secondary-color);
 }
 
-.nav_container_shop p {
+.navbar__shop p {
   font-size: 2rem;
-  color: #fff;
+  color: var(--white-color);
 }

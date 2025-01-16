@@ -1,6 +1,6 @@
-import { useGlobalContext } from "../../context/context";
-
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+
+import { useGlobalContext } from "../../context/context";
 
 interface CartItemProps {
   id: number;
@@ -12,24 +12,23 @@ export const CartItem = ({ id }: CartItemProps): JSX.Element => {
   const item = cart.find((cartItem) => cartItem.id === id);
 
   return (
-    <div className="cart_item">
-      <div className="cart_item_img">
+    <div className="cart__item">
+      <div className="cart__item__img">
         <img
-          className="cart_item_img_img"
           src={item?.img}
           alt={item?.title}
         ></img>
       </div>
 
-      <div className="cart_item_information">
+      <div className="cart__item__information">
         <h3>{item?.title}</h3>
         <p>${item?.price}</p>
-        <button type="button" onClick={() => clearItem(id)}>
+        <button type="button" aria-label="remove" onClick={() => clearItem(id)}>
           Remove
         </button>
       </div>
 
-      <div className="cart_item_amount">
+      <div className="cart__item__amount">
         <button
           type="button"
           aria-label="increase phone"
