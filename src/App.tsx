@@ -6,15 +6,16 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { useGlobalContext } from "./context/context";
 
 import "./App.css";
+import "./AppLoading.css";
 
 export function App(): JSX.Element {
   const { loading } = useGlobalContext();
 
   if (loading) {
     return (
-      <main>
-        <section className="cart__title">
-          <h2>Loading...</h2>
+      <main className="main-loading main-app">
+        <section className="main-loading__header">
+          <h2 className="main-loading__title">Loading...</h2>
         </section>
       </main>
     );
@@ -22,11 +23,9 @@ export function App(): JSX.Element {
 
   return (
     <Fragment>
-      <header>
-        <Navbar></Navbar>
-      </header>
+      <Navbar></Navbar>
 
-      <main>
+      <main className="main-cart main-app">
         <CartContainer></CartContainer>
       </main>
     </Fragment>

@@ -76,7 +76,7 @@ describe("CartContainer.tsx", () => {
       });
 
       // eslint-disable-next-line
-      const phoneElements = container.querySelectorAll(".cart__item");
+      const phoneElements = container.querySelectorAll(".item");
 
       expect(phoneElements).toHaveLength(phones.length);
     });
@@ -89,7 +89,7 @@ describe("CartContainer.tsx", () => {
       });
 
       // eslint-disable-next-line
-      const phoneElements = container.querySelectorAll(".cart__item");
+      const phoneElements = container.querySelectorAll(".item");
 
       expect(phoneElements).toHaveLength(phones.length);
 

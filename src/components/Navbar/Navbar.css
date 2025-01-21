@@ -9,7 +9,7 @@
   background-color: var(--primary-color);
 }
 
-.navbar h3 {
+.navbar__title {
   color: var(--white-color);
   font-size: 4rem;
 }
@@ -18,7 +18,7 @@
   position: relative;
 }
 
-#cart {
+.navbar__shop-icon {
   position: relative;
   left: -1.5rem;
   font-size: 3rem;
@@ -37,7 +37,7 @@
   background-color: var(--secondary-color);
 }
 
-.navbar__shop p {
+.navbar__amount-text {
   font-size: 2rem;
   color: var(--white-color);
 }

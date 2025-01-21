@@ -10,9 +10,9 @@ export const CartContainer = (): JSX.Element => {
   if (cart.length === 0) {
     return (
       <section className="cart">
-        <article className="cart__title">
-          <h2>Your bag</h2>
-          <h4>Is currently empty</h4>
+        <article className="cart__header">
+          <h2 className="cart__title">Your bag</h2>
+          <h4 className="cart__description">Is currently empty</h4>
         </article>
       </section>
     );
@@ -20,8 +20,8 @@ export const CartContainer = (): JSX.Element => {
 
   return (
     <section className="cart">
-      <article className="cart__title">
-        <h2>Your bag</h2>
+      <article className="cart__header">
+        <h2 className="cart__title">Your bag</h2>
       </article>
 
       <article className="cart__items">
@@ -31,14 +31,15 @@ export const CartContainer = (): JSX.Element => {
       </article>
 
       <article className="cart__total">
-        <div className="cart__total__price">
-          <h3>Total</h3>
-          <p>$ {total.toFixed(2)}</p>
+        <div className="cart__price">
+          <h3 className="cart__price-title">Total</h3>
+          <p className="cart__price-number">$ {total.toFixed(2)}</p>
         </div>
 
         <button
           type="button"
           aria-label="clear cart"
+          className="cart__clear-cart"
           onClick={() => clearCart()}
         >
           CLEAR CART

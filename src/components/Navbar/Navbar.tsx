@@ -8,15 +8,20 @@ export const Navbar = (): JSX.Element => {
   const { amount } = useGlobalContext();
 
   return (
-    <nav className="navbar">
-      <h3>UseReducer</h3>
+    <header className="header-wrapper">
+      <nav className="navbar">
+        <h3 className="navbar__title">UseReducer</h3>
 
-      <div className="navbar__shop">
-        <BsFillCartFill id="cart"></BsFillCartFill>
-        <div className="navbar__amount">
-          <p>{amount}</p>
+        <div className="navbar__shop">
+          <BsFillCartFill
+            id="cart"
+            className="navbar__shop-icon"
+          ></BsFillCartFill>
+          <div className="navbar__amount">
+            <p className="navbar__amount-text">{amount}</p>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };

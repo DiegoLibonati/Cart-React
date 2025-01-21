@@ -47,7 +47,7 @@ describe("App.tsx", () => {
       });
 
       // eslint-disable-next-line
-      const phoneElements = container.querySelectorAll(".cart__item");
+      const phoneElements = container.querySelectorAll(".item");
 
       expect(phoneElements).toHaveLength(phones.length);
 

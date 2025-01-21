@@ -2,6 +2,8 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 import { useGlobalContext } from "../../context/context";
 
+import "./CartItem.css";
+
 interface CartItemProps {
   id: number;
 }
@@ -12,37 +14,47 @@ export const CartItem = ({ id }: CartItemProps): JSX.Element => {
   const item = cart.find((cartItem) => cartItem.id === id);
 
   return (
-    <div className="cart__item">
-      <div className="cart__item__img">
-        <img
-          src={item?.img}
-          alt={item?.title}
-        ></img>
+    <div className="item">
+      <div className="item__img-wrapper">
+        <img className="item__img" src={item?.img} alt={item?.title}></img>
       </div>
 
-      <div className="cart__item__information">
-        <h3>{item?.title}</h3>
-        <p>${item?.price}</p>
-        <button type="button" aria-label="remove" onClick={() => clearItem(id)}>
+      <div className="item__information">
+        <h3 className="item__title">{item?.title}</h3>
+        <p className="item__price">${item?.price}</p>
+        <button
+          type="button"
+          className="item__remove"
+          aria-label="remove"
+          onClick={() => clearItem(id)}
+        >
           Remove
         </button>
       </div>
 
-      <div className="cart__item__amount">
+      <div className="item__amount">
         <button
           type="button"
           aria-label="increase phone"
+          className="item__increase"
           onClick={() => increaseItem(id)}
         >
-          <BsChevronUp id="cart-up"></BsChevronUp>
+          <BsChevronUp
+            id="cart-up"
+            className="item__increase-icon"
+          ></BsChevronUp>
         </button>
-        <p>{item?.amount}</p>
+        <p className="item__amount-text">{item?.amount}</p>
         <button
           type="button"
           aria-label="decrease phone"
+          className="item__decrease"
           onClick={() => decreaseItem(id)}
         >
-          <BsChevronDown id="cart-down"></BsChevronDown>
+          <BsChevronDown
+            id="cart-down"
+            className="item__decrease-icon"
+          ></BsChevronDown>
         </button>
       </div>
     </div>
