@@ -25,7 +25,7 @@
   color: var(--white-color);
 }
 
-.navbar__amount {
+.navbar__shop-amount {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +37,7 @@
   background-color: var(--secondary-color);
 }
 
-.navbar__amount-text {
+.navbar__shop-amount-text {
   font-size: 2rem;
   color: var(--white-color);
 }

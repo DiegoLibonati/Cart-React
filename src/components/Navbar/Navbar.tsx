@@ -17,8 +17,8 @@ export const Navbar = (): JSX.Element => {
             id="cart"
             className="navbar__shop-icon"
           ></BsFillCartFill>
-          <div className="navbar__amount">
-            <p className="navbar__amount-text">{amount}</p>
+          <div className="navbar__shop-amount">
+            <p className="navbar__shop-amount-text">{amount}</p>
           </div>
         </div>
       </nav>

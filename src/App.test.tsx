@@ -67,7 +67,7 @@ describe("App.tsx", () => {
 
       // eslint-disable-next-line
       const amountElementNavBar = container.querySelector(
-        ".navbar__amount > p"
+        ".navbar__shop-amount-text"
       );
 
       expect(amountElementNavBar).toBeInTheDocument();
