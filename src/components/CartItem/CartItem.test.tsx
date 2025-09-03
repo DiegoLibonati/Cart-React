@@ -5,8 +5,8 @@ import { Phone } from "../../entities/entities";
 
 import { CartItem } from "./CartItem";
 
-import { phone, phones } from "../../tests/jest.constants";
-import { createServer } from "../../tests/msw/server";
+import { phone, phones } from "../../../tests/jest.constants";
+import { createServer } from "../../../tests/msw/server";
 
 import { AppProvider } from "../../context/context";
 

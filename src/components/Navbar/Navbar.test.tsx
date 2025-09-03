@@ -2,8 +2,8 @@ import { screen, render } from "@testing-library/react";
 
 import { Navbar } from "./Navbar";
 
-import { createServer } from "../../tests/msw/server";
-import { phones } from "../../tests/jest.constants";
+import { createServer } from "../../../tests/msw/server";
+import { phones } from "../../../tests/jest.constants";
 
 import { AppProvider } from "../../context/context";
 import { getTotalAndAmount } from "../../helpers/getTotalAndAmount";
