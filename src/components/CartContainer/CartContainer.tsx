@@ -1,8 +1,8 @@
-import { CartItem } from "../CartItem/CartItem";
+import { CartItem } from "@src/components/CartItem/CartItem";
 
-import { useGlobalContext } from "../../context/context";
+import { useGlobalContext } from "@src/context/context";
 
-import "./CartContainer.css";
+import "@src/components/CartContainer/CartContainer.css";
 
 export const CartContainer = (): JSX.Element => {
   const { cart, total, clearCart } = useGlobalContext();

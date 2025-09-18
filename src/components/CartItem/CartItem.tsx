@@ -1,8 +1,8 @@
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
-import { useGlobalContext } from "../../context/context";
+import { useGlobalContext } from "@src/context/context";
 
-import "./CartItem.css";
+import "@src/components/CartItem/CartItem.css";
 
 interface CartItemProps {
   id: number;

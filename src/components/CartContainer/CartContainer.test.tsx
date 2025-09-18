@@ -1,15 +1,15 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Phone } from "../../entities/entities";
+import { Phone } from "@src/entities/entities";
 
-import { CartContainer } from "./CartContainer";
+import { CartContainer } from "@src/components/CartContainer/CartContainer";
 
-import { createServer } from "../../../tests/msw/server";
-import { phone, phones } from "../../../tests/jest.constants";
+import { createServer } from "@tests/msw/server";
+import { phone, phones } from "@tests/jest.constants";
 
-import { getTotalAndAmount } from "../../helpers/getTotalAndAmount";
-import { AppProvider } from "../../context/context";
+import { getTotalAndAmount } from "@src/helpers/getTotalAndAmount";
+import { AppProvider } from "@src/context/context";
 
 const renderComponent = (): {
   container: HTMLElement;

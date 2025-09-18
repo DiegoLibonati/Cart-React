@@ -1,6 +1,6 @@
-import { Phone } from "../entities/entities";
+import { Phone } from "@src/entities/entities";
 
-import { getTotalAndAmount } from "./getTotalAndAmount";
+import { getTotalAndAmount } from "@src/helpers/getTotalAndAmount";
 
 describe("getTotalAndAmount.ts", () => {
   describe("General Tests.", () => {

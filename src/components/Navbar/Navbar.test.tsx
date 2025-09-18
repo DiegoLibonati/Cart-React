@@ -1,12 +1,12 @@
 import { screen, render } from "@testing-library/react";
 
-import { Navbar } from "./Navbar";
+import { Navbar } from "@src/components/Navbar/Navbar";
 
-import { createServer } from "../../../tests/msw/server";
-import { phones } from "../../../tests/jest.constants";
+import { createServer } from "@tests/msw/server";
+import { phones } from "@tests/jest.constants";
 
-import { AppProvider } from "../../context/context";
-import { getTotalAndAmount } from "../../helpers/getTotalAndAmount";
+import { AppProvider } from "@src/context/context";
+import { getTotalAndAmount } from "@src/helpers/getTotalAndAmount";
 
 describe("Navbar.tsx", () => {
   describe("General Tests.", () => {

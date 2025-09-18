@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 
-import { CartContainer } from "./components/CartContainer/CartContainer";
-import { Navbar } from "./components/Navbar/Navbar";
+import { CartContainer } from "@src/components/CartContainer/CartContainer";
+import { Navbar } from "@src/components/Navbar/Navbar";
 
-import { useGlobalContext } from "./context/context";
+import { useGlobalContext } from "@src/context/context";
 
-import "./App.css";
-import "./AppLoading.css";
+import "@src/App.css";
+import "@src/AppLoading.css";
 
 export function App(): JSX.Element {
   const { loading } = useGlobalContext();

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useReducer } from "react";
 
-import { AppContext as AppContextT, CartState, Phone } from "../entities/entities";
+import { AppContext as AppContextT, CartState, Phone } from "@src/entities/entities";
 
-import reducer from "./reducer";
+import reducer from "@src/context/reducer";
 
 const API_PHONES = "/react-useReducer-cart-project";
 

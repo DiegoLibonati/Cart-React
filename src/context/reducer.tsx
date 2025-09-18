@@ -1,6 +1,6 @@
-import { CartState, PayloadReducer } from "../entities/entities";
+import { CartState, PayloadReducer } from "@src/entities/entities";
 
-import { getTotalAndAmount } from "../helpers/getTotalAndAmount";
+import { getTotalAndAmount } from "@src/helpers/getTotalAndAmount";
 
 const reducer = (state: CartState, action: PayloadReducer) => {
   if (action.type === "CLEAR_CART") {

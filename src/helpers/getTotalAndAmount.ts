@@ -1,4 +1,4 @@
-import { Phone } from "../entities/entities";
+import { Phone } from "@src/entities/entities";
 
 type GetTotalAndAmount = {
   total: number;

@@ -1,14 +1,14 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Phone } from "../../entities/entities";
+import { Phone } from "@src/entities/entities";
 
-import { CartItem } from "./CartItem";
+import { CartItem } from "@src/components/CartItem/CartItem";
 
-import { phone, phones } from "../../../tests/jest.constants";
-import { createServer } from "../../../tests/msw/server";
+import { phone, phones } from "@tests/jest.constants";
+import { createServer } from "@tests/msw/server";
 
-import { AppProvider } from "../../context/context";
+import { AppProvider } from "@src/context/context";
 
 const renderComponent = async (): Promise<{
   container: HTMLElement;
