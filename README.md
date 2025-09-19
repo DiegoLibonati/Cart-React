@@ -51,6 +51,7 @@ I made a web application that simulates a shopping cart. Basically we will have 
 "msw": "^2.4.11"
 "ts-jest": "^29.2.5"
 "typescript": "^4.9.5"
+"vite": "^7.1.5"
 ```
 
 ## Portfolio Link
