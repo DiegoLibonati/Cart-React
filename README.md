@@ -22,6 +22,7 @@ I made a web application that simulates a shopping cart. Basically we will have 
 1. React JS
 2. Typescript
 3. CSS3
+4. Vite
 
 ## Libraries used
 
