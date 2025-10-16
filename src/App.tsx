@@ -1,33 +1,16 @@
 import { Fragment } from "react";
 
-import { CartContainer } from "@src/components/CartContainer/CartContainer";
 import { Navbar } from "@src/components/Navbar/Navbar";
 
-import { useGlobalContext } from "@src/context/context";
+import { CartPage } from "@src/pages/CartPage/CartPage";
 
 import "@src/App.css";
-import "@src/AppLoading.css";
 
 export function App(): JSX.Element {
-  const { loading } = useGlobalContext();
-
-  if (loading) {
-    return (
-      <main className="main-loading main-app">
-        <section className="main-loading__header">
-          <h2 className="main-loading__title">Loading...</h2>
-        </section>
-      </main>
-    );
-  }
-
   return (
     <Fragment>
       <Navbar></Navbar>
-
-      <main className="main-cart main-app">
-        <CartContainer></CartContainer>
-      </main>
+      <CartPage></CartPage>
     </Fragment>
   );
 }

@@ -2,30 +2,48 @@ import { screen, render } from "@testing-library/react";
 
 import { Navbar } from "@src/components/Navbar/Navbar";
 
-import { createServer } from "@tests/msw/server";
-import { phones } from "@tests/jest.constants";
+import { useCartContext } from "@src/hooks/useCartContext";
 
-import { AppProvider } from "@src/context/context";
 import { getTotalAndAmount } from "@src/helpers/getTotalAndAmount";
 
-describe("Navbar.tsx", () => {
-  describe("General Tests.", () => {
-    createServer([
-      {
-        path: "/react-useReducer-cart-project",
-        method: "get",
-        res: () => {
-          return phones;
-        },
-      },
-    ]);
+import { phones } from "@tests/jest.constants";
 
+type RenderComponent = {
+  container: HTMLElement;
+};
+
+const renderComponent = (): RenderComponent => {
+  const { container } = render(<Navbar />);
+
+  return { container: container };
+};
+
+jest.mock("@src/hooks/useCartContext", () => ({
+  useCartContext: jest.fn(),
+}));
+
+describe("Navbar.tsx", () => {
+  beforeEach(() => {
+    const { total, amount } = getTotalAndAmount(phones);
+
+    (useCartContext as jest.Mock).mockReturnValue({
+      state: {
+        cart: phones,
+        amount: amount,
+        total: total,
+        isLoading: false,
+      },
+      dispatch: jest.fn(),
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  describe("General Tests.", () => {
     test("Rendering of the number of telephones in the cart", async () => {
-      render(
-        <AppProvider>
-          <Navbar />
-        </AppProvider>
-      );
+      renderComponent();
 
       const { amount: amountFromPhones } = getTotalAndAmount(phones);
 
@@ -34,21 +52,49 @@ describe("Navbar.tsx", () => {
       );
 
       expect(amount).toBeInTheDocument();
+      expect(amount.textContent).toBe(String(amountFromPhones));
     });
 
-    test("Rendering of the number of telephones in the cart through an initialValue", async () => {
-      const phone = phones[0];
+    test("It is expected that the navbar renders correctly", () => {
+      const { container } = renderComponent();
 
-      render(
-        <AppProvider initialCart={[phones[0]]}>
-          <Navbar />
-        </AppProvider>
-      );
+      const navbarElement = container.querySelector(".header-wrapper");
 
-      const amountPhone = phone.amount;
-      const amountElement = screen.getByText(new RegExp(String(amountPhone)));
+      expect(navbarElement).toBeInTheDocument();
+    });
 
-      expect(amountElement).toBeInTheDocument();
+    test("It is expected that the cart icon is rendered", () => {
+      renderComponent();
+
+      const cartIcon = document.querySelector(".navbar__shop-icon");
+
+      expect(cartIcon).toBeInTheDocument();
+    });
+
+    test("It is expected that the amount badge is rendered", () => {
+      const { container } = renderComponent();
+
+      const amountBadge = container.querySelector(".navbar__shop-amount");
+
+      expect(amountBadge).toBeInTheDocument();
+    });
+
+    test("It is expected to show 0 when cart is empty", () => {
+      (useCartContext as jest.Mock).mockReturnValue({
+        state: {
+          cart: [],
+          amount: 0,
+          total: 0,
+          isLoading: false,
+        },
+        dispatch: jest.fn(),
+      });
+
+      renderComponent();
+
+      const amountText = screen.getByText("0");
+
+      expect(amountText).toBeInTheDocument();
     });
   });
 });

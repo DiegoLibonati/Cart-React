@@ -1,17 +1,15 @@
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
-import { useGlobalContext } from "@src/context/context";
+import { CartItemProps } from "@src/entities/props";
+
+import { useCartContext } from "@src/hooks/useCartContext";
 
 import "@src/components/CartItem/CartItem.css";
 
-interface CartItemProps {
-  id: number;
-}
-
 export const CartItem = ({ id }: CartItemProps): JSX.Element => {
-  const { cart, clearItem, increaseItem, decreaseItem } = useGlobalContext();
+  const { state, dispatch } = useCartContext();
 
-  const item = cart.find((cartItem) => cartItem.id === id);
+  const item = state.cart.find((cartItem) => cartItem.id === id);
 
   return (
     <div className="item">
@@ -26,7 +24,7 @@ export const CartItem = ({ id }: CartItemProps): JSX.Element => {
           type="button"
           className="item__remove"
           aria-label="remove"
-          onClick={() => clearItem(id)}
+          onClick={() => dispatch({ type: "CLEAR_ITEM", payload: { id: id } })}
         >
           Remove
         </button>
@@ -37,7 +35,9 @@ export const CartItem = ({ id }: CartItemProps): JSX.Element => {
           type="button"
           aria-label="increase phone"
           className="item__increase"
-          onClick={() => increaseItem(id)}
+          onClick={() =>
+            dispatch({ type: "INCREASE_ITEM", payload: { id: id } })
+          }
         >
           <BsChevronUp
             id="cart-up"
@@ -49,7 +49,9 @@ export const CartItem = ({ id }: CartItemProps): JSX.Element => {
           type="button"
           aria-label="decrease phone"
           className="item__decrease"
-          onClick={() => decreaseItem(id)}
+          onClick={() =>
+            dispatch({ type: "DECREASE_ITEM", payload: { id: id } })
+          }
         >
           <BsChevronDown
             id="cart-down"

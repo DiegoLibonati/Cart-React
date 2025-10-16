@@ -1,4 +1,4 @@
-.main-loading {
+.loading {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,11 +7,11 @@
   width: 100%;
 }
 
-.main-loading__header {
+.loading__header {
   padding: 1rem;
 }
 
-.main-loading__title {
+.loading__title {
   font-size: 5rem;
   text-align: center;
 }

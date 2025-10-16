@@ -1,11 +1,11 @@
 import { BsFillCartFill } from "react-icons/bs";
 
-import { useGlobalContext } from "@src/context/context";
+import { useCartContext } from "@src/hooks/useCartContext";
 
 import "@src/components/Navbar/Navbar.css";
 
 export const Navbar = (): JSX.Element => {
-  const { amount } = useGlobalContext();
+  const { state } = useCartContext();
 
   return (
     <header className="header-wrapper">
@@ -18,7 +18,7 @@ export const Navbar = (): JSX.Element => {
             className="navbar__shop-icon"
           ></BsFillCartFill>
           <div className="navbar__shop-amount">
-            <p className="navbar__shop-amount-text">{amount}</p>
+            <p className="navbar__shop-amount-text">{state.amount}</p>
           </div>
         </div>
       </nav>

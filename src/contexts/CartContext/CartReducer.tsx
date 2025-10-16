@@ -1,8 +1,16 @@
-import { CartState, PayloadReducer } from "@src/entities/entities";
+import { CartReducer as CartReducerT } from "@src/entities/contexts";
+import { CartState } from "@src/entities/states";
 
 import { getTotalAndAmount } from "@src/helpers/getTotalAndAmount";
 
-const reducer = (state: CartState, action: PayloadReducer) => {
+export const initialState: CartState = {
+  loading: false,
+  cart: [],
+  total: 0,
+  amount: 0,
+};
+
+export const CartReducer = (state: CartState, action: CartReducerT) => {
   if (action.type === "CLEAR_CART") {
     return { ...state, cart: [] };
   }
@@ -56,5 +64,3 @@ const reducer = (state: CartState, action: PayloadReducer) => {
 
   throw new Error("Error match");
 };
-
-export default reducer;

@@ -1,9 +1,5 @@
-import { Phone } from "@src/entities/entities";
-
-type GetTotalAndAmount = {
-  total: number;
-  amount: number;
-};
+import { Phone } from "@src/entities/app";
+import { GetTotalAndAmount } from "@src/entities/helpers";
 
 export const getTotalAndAmount = (arr: Phone[]): GetTotalAndAmount => {
   return arr.reduce(

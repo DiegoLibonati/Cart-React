@@ -1,24 +1,34 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Phone } from "@src/entities/entities";
+import { Phone } from "@src/entities/app";
 
 import { CartItem } from "@src/components/CartItem/CartItem";
 
-import { phone, phones } from "@tests/jest.constants";
-import { createServer } from "@tests/msw/server";
+import { useCartContext } from "@src/hooks/useCartContext";
 
-import { AppProvider } from "@src/context/context";
+import { phone } from "@tests/jest.constants";
 
-const renderComponent = async (): Promise<{
+type RenderComponent = {
   container: HTMLElement;
   phone: Phone;
-}> => {
-  const { container } = render(
-    <AppProvider>
-      <CartItem id={phone.id} />
-    </AppProvider>
-  );
+  mockDispatch: jest.Mock;
+};
+
+const renderComponent = async (): Promise<RenderComponent> => {
+  const mockDispatch = jest.fn();
+
+  (useCartContext as jest.Mock).mockReturnValue({
+    state: {
+      cart: [phone],
+      amount: phone.amount,
+      total: phone.price * phone.amount,
+      isLoading: false,
+    },
+    dispatch: mockDispatch,
+  });
+
+  const { container } = render(<CartItem id={phone.id} />);
 
   await screen.findByRole("heading", {
     name: phone.title,
@@ -27,21 +37,20 @@ const renderComponent = async (): Promise<{
   return {
     container: container,
     phone: phone,
+    mockDispatch: mockDispatch,
   };
 };
 
-describe("CartItem.tsx", () => {
-  describe("General Tests.", () => {
-    createServer([
-      {
-        path: "/react-useReducer-cart-project",
-        method: "get",
-        res: () => {
-          return phones;
-        },
-      },
-    ]);
+jest.mock("@src/hooks/useCartContext", () => ({
+  useCartContext: jest.fn(),
+}));
 
+describe("CartItem.tsx", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  describe("General Tests.", () => {
     test("It is expected to render the title, price, image and quantity.", async () => {
       const { phone } = await renderComponent();
 
@@ -80,7 +89,7 @@ describe("CartItem.tsx", () => {
     });
 
     test("It seeks to increase the amount of the cell when the increase amount button is touched.", async () => {
-      const { phone } = await renderComponent();
+      const { phone, mockDispatch } = await renderComponent();
 
       const increaseButton = screen.getByRole("button", {
         name: /increase phone/i,
@@ -90,13 +99,15 @@ describe("CartItem.tsx", () => {
 
       await user.click(increaseButton);
 
-      const amountElement = await screen.findByText(String(phone.amount + 1));
-
-      expect(amountElement).toBeInTheDocument();
+      expect(mockDispatch).toHaveBeenCalledTimes(1);
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: "INCREASE_ITEM",
+        payload: { id: phone.id },
+      });
     });
 
     test("It is intended to decrease the amount of the cell phone when the decrease amount button is touched.", async () => {
-      const { phone } = await renderComponent();
+      const { phone, mockDispatch } = await renderComponent();
 
       const decreaseButton = screen.getByRole("button", {
         name: /decrease phone/i,
@@ -106,24 +117,15 @@ describe("CartItem.tsx", () => {
 
       await user.click(decreaseButton);
 
-      const quantity = phone.amount - 1;
-
-      if (!quantity) {
-        const amountElement = screen.queryByText(String(quantity));
-
-        // eslint-disable-next-line
-        expect(amountElement).not.toBeInTheDocument();
-
-        return;
-      }
-
-      const amountElement = await screen.findByText(String(quantity));
-
-      expect(amountElement).toBeInTheDocument();
+      expect(mockDispatch).toHaveBeenCalledTimes(1);
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: "DECREASE_ITEM",
+        payload: { id: phone.id },
+      });
     });
 
     test("Cell phone disappear when you tap on the remove button.", async () => {
-      const { phone } = await renderComponent();
+      const { phone, mockDispatch } = await renderComponent();
 
       const removeButton = screen.getByRole("button", {
         name: /remove/i,
@@ -133,9 +135,11 @@ describe("CartItem.tsx", () => {
 
       await user.click(removeButton);
 
-      const headingElement = screen.queryByText(phone.title);
-
-      expect(headingElement).not.toBeInTheDocument();
+      expect(mockDispatch).toHaveBeenCalledTimes(1);
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: "CLEAR_ITEM",
+        payload: { id: phone.id },
+      });
     });
   });
 });

@@ -1,4 +1,4 @@
-import { Phone } from "@src/entities/entities";
+import { Phone } from "@src/entities/app";
 
 import { getTotalAndAmount } from "@src/helpers/getTotalAndAmount";
 
