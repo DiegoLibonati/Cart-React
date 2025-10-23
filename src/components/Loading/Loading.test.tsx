@@ -35,7 +35,8 @@ describe("Loading.tsx", () => {
     test("It is expected that the loading container has the correct class", () => {
       const { container } = renderComponent();
 
-      const loadingContainer = container.querySelector(".loading");
+      const loadingContainer =
+        container.querySelector<HTMLDivElement>(".loading");
 
       expect(loadingContainer).toBeInTheDocument();
       expect(loadingContainer).toHaveClass("loading");
@@ -44,7 +45,8 @@ describe("Loading.tsx", () => {
     test("It is expected that the loading header has the correct class", () => {
       const { container } = renderComponent();
 
-      const loadingHeader = container.querySelector(".loading__header");
+      const loadingHeader =
+        container.querySelector<HTMLDivElement>(".loading__header");
 
       expect(loadingHeader).toBeInTheDocument();
       expect(loadingHeader).toHaveClass("loading__header");
@@ -53,7 +55,8 @@ describe("Loading.tsx", () => {
     test("It is expected that the loading title has the correct class", () => {
       const { container } = renderComponent();
 
-      const loadingTitle = container.querySelector(".loading__title");
+      const loadingTitle =
+        container.querySelector<HTMLHeadingElement>(".loading__title");
 
       expect(loadingTitle).toBeInTheDocument();
       expect(loadingTitle).toHaveClass("loading__title");

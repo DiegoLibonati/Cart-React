@@ -51,24 +51,26 @@ describe("CartPage.tsx", () => {
         name: firstPhone.title,
       });
 
-      const phoneElements = container.querySelectorAll(".item");
+      const phoneElements = container.querySelectorAll<HTMLDivElement>(".item");
 
       expect(phoneElements).toHaveLength(phones.length);
 
       const firstPhoneElement = phoneElements[0];
 
-      const firstPhoneElementIncreaseButton = firstPhoneElement.querySelector(
-        "[aria-label='increase phone']"
-      );
-      const firstPhoneElementDecreaseButton = firstPhoneElement.querySelector(
-        "[aria-label='decrease phone']"
-      );
+      const firstPhoneElementIncreaseButton =
+        firstPhoneElement.querySelector<HTMLButtonElement>(
+          "[aria-label='increase phone']"
+        );
+      const firstPhoneElementDecreaseButton =
+        firstPhoneElement.querySelector<HTMLButtonElement>(
+          "[aria-label='decrease phone']"
+        );
 
       expect(firstPhoneElement).toBeInTheDocument();
       expect(firstPhoneElementIncreaseButton).toBeInTheDocument();
       expect(firstPhoneElementDecreaseButton).toBeInTheDocument();
 
-      const amountElementNavBar = container.querySelector(
+      const amountElementNavBar = container.querySelector<HTMLParagraphElement>(
         ".navbar__shop-amount-text"
       );
 
@@ -118,7 +120,7 @@ describe("CartPage.tsx", () => {
         name: firstPhone.title,
       });
 
-      const mainElement = container.querySelector(".cart-page");
+      const mainElement = container.querySelector<HTMLElement>(".cart-page");
 
       expect(mainElement).toBeInTheDocument();
       expect(mainElement).toHaveClass("main-app");
@@ -131,7 +133,7 @@ describe("CartPage.tsx", () => {
         name: firstPhone.title,
       });
 
-      const phoneElements = container.querySelectorAll(".item");
+      const phoneElements = container.querySelectorAll<HTMLDivElement>(".item");
 
       expect(phoneElements).toHaveLength(phones.length);
     });

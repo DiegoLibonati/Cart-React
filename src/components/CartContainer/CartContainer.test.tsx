@@ -97,7 +97,7 @@ describe("CartContainer.tsx", () => {
         name: firstPhone.title,
       });
 
-      const phoneElements = container.querySelectorAll(".item");
+      const phoneElements = container.querySelectorAll<HTMLDivElement>(".item");
 
       expect(phoneElements).toHaveLength(phones.length);
     });
@@ -109,18 +109,20 @@ describe("CartContainer.tsx", () => {
         name: firstPhone.title,
       });
 
-      const phoneElements = container.querySelectorAll(".item");
+      const phoneElements = container.querySelectorAll<HTMLDivElement>(".item");
 
       expect(phoneElements).toHaveLength(phones.length);
 
       const firstPhoneElement = phoneElements[0];
 
-      const firstPhoneElementIncreaseButton = firstPhoneElement.querySelector(
-        "[aria-label='increase phone']"
-      );
-      const firstPhoneElementDecreaseButton = firstPhoneElement.querySelector(
-        "[aria-label='decrease phone']"
-      );
+      const firstPhoneElementIncreaseButton =
+        firstPhoneElement.querySelector<HTMLButtonElement>(
+          "[aria-label='increase phone']"
+        );
+      const firstPhoneElementDecreaseButton =
+        firstPhoneElement.querySelector<HTMLButtonElement>(
+          "[aria-label='decrease phone']"
+        );
 
       expect(firstPhoneElement).toBeInTheDocument();
       expect(firstPhoneElementIncreaseButton).toBeInTheDocument();

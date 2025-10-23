@@ -58,7 +58,8 @@ describe("Navbar.tsx", () => {
     test("It is expected that the navbar renders correctly", () => {
       const { container } = renderComponent();
 
-      const navbarElement = container.querySelector(".header-wrapper");
+      const navbarElement =
+        container.querySelector<HTMLElement>(".header-wrapper");
 
       expect(navbarElement).toBeInTheDocument();
     });
@@ -66,7 +67,8 @@ describe("Navbar.tsx", () => {
     test("It is expected that the cart icon is rendered", () => {
       renderComponent();
 
-      const cartIcon = document.querySelector(".navbar__shop-icon");
+      const cartIcon =
+        document.querySelector<HTMLElement>(".navbar__shop-icon");
 
       expect(cartIcon).toBeInTheDocument();
     });
@@ -74,7 +76,9 @@ describe("Navbar.tsx", () => {
     test("It is expected that the amount badge is rendered", () => {
       const { container } = renderComponent();
 
-      const amountBadge = container.querySelector(".navbar__shop-amount");
+      const amountBadge = container.querySelector<HTMLDivElement>(
+        ".navbar__shop-amount"
+      );
 
       expect(amountBadge).toBeInTheDocument();
     });
