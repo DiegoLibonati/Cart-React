@@ -1,6 +1,6 @@
-import { Phone } from "@src/entities/app";
+import { GetPhonesResponse } from "@src/entities/responses";
 
-export const getPhones = async (): Promise<Phone[]> => {
+export const getPhones = async (): Promise<GetPhonesResponse> => {
   try {
     const response = await fetch("/react-useReducer-cart-project", {
       method: "GET",
@@ -10,7 +10,9 @@ export const getPhones = async (): Promise<Phone[]> => {
       throw new Error("Error fetching phones.");
     }
 
-    return response.json();
+    const data = await response.json();
+
+    return data;
   } catch (e) {
     throw new Error(`Error fetching phones: ${e}.`);
   }
